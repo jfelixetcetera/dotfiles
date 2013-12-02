@@ -1,0 +1,58 @@
+[user]
+    name  = Joshua Jabbour
+    email = code@joshuajabbour.com
+
+[include]
+    path = .gitconfig.local
+
+[core]
+    excludesfile = ~/.gitignore.global
+
+[credential]
+    helper = osxkeychain
+
+[hub]
+    protocol = https
+
+[color]
+    ui = true
+
+# [branch]
+#     autosetupmerge = true
+
+[push]
+    default = upstream
+
+[remote "origin"]
+    push = HEAD
+
+[diff]
+    tool = Kaleidoscope
+[difftool]
+    prompt = false
+[difftool "Kaleidoscope"]
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[merge]
+    tool = Kaleidoscope
+[mergetool]
+    prompt = false
+[mergetool "Kaleidoscope"]
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
+
+[alias]
+    br    = branch
+    ci    = commit
+    cia   = commit -a
+    co    = checkout
+    cp    = cherry-pick
+    df    = diff
+    dfbr  = log --no-merges --oneline
+    st    = status
+    sh    = stash
+    up    = pull origin
+    who   = shortlog -s --
+    sub   = submodule
+    spull = !git-svn rebase
+    spush = !git-svn dcommit
